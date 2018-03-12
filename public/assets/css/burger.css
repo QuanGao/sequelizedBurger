@@ -1,0 +1,29 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+ul {
+    line-height: 50%;
+    list-style-type: none;
+    max-width: 70%;
+    font-size: 14px;
+}
+
+.notEaten {
+    margin-left: 150px;
+
+}
+
+input {
+    height: 60px;
+    max-width: 30%;
+    margin: auto;
+}
+
+.eaten {
+    color:darkgrey
+}
