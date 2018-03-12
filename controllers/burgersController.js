@@ -36,20 +36,14 @@ router.post("/api/burgers", function (req, res) {
 //     })
 // });
 
-// router.delete("/api/burgers/:id", function (req, res) {
-//     let condition = {
-//         id: req.params.id
-//     };
+router.delete("/api/burgers/:id", function (req, res) {
 
-//     db.Burger.destroy
-
-//     burger.deleteBurger(condition, function (result) {
-//         if (result.affectedRows === 0) {
-//             return res.status(404).end()
-//         } else {
-//             return res.status(200).end();
-//         }
-//     })
-// })
+    db.Burger.destroy({
+        where: {
+            id: req.params.id 
+        }
+    }).then (result => result.affectedRows === 0 ? 
+        res.status(404).end():res.status(200).end())
+})
 
 module.exports = router;
