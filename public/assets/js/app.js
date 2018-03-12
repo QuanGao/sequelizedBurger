@@ -24,10 +24,6 @@ $(function () {
         $.ajax({
             url: `/api/burgers/${id}`,
             method: "PUT",
-            data: {
-                id: id,
-                devoured: true
-            }
         }).done(function () {
             location.reload();
         });

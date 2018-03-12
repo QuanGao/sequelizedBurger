@@ -4,10 +4,13 @@ const router = express.Router();
 
 
 router.get("/index", (req, res) => {
-    db.Burger.findAll({}).then(hbsObji => res.render("index", hbsObji))
+    db.Burger.findAll({}).then(data => {
+        let burgerData = data.map(a=>a.dataValues)
+        res.render("index", {burgers: burgerData})
+    })
 });
 
-router.post("/api/burgers", function (req, res) {
+router.post("/api/burgers", (req, res) => {
     let newBurgerData = {
         "burger_name": req.body.burger_name,
     }
