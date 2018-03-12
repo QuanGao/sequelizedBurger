@@ -2,7 +2,6 @@ const db = require("../models");
 const express = require("express");
 const router = express.Router();
 
-console.log("hello" + db.burger);
 
 router.get("/index", (req, res) => {
     db.Burger.findAll({}).then(hbsObji => res.render("index", hbsObji))
@@ -19,31 +18,26 @@ router.post("/api/burgers", function (req, res) {
 
 });
 
-// router.put("/api/burgers/:id", function (req, res) {
-//     let condition = {
-//         id: req.params.id
-//     };
-//     let toEaten = {
-//         devoured: true
-//     }
+router.put("/api/burgers/:id", (req, res) => {
+    db.Burger.update({ devoured: true }, {
+        where: {
+            id: req.params.id
+        }
+    }).then(result => { 
+        return result.changedRows == 0 ?
+        res.status(404).end() : res.status(200).end()
+    })
+})
 
-//     burger.updateBurger(toEaten, condition, function (result) {
-//         if (result.changedRows == 0) {
-//             return res.status(404).end();
-//         } else {
-//             res.status(200).end();
-//         }
-//     })
-// });
-
-router.delete("/api/burgers/:id", function (req, res) {
-
+router.delete("/api/burgers/:id", (req, res) => {
     db.Burger.destroy({
         where: {
-            id: req.params.id 
+            id: req.params.id
         }
-    }).then (result => result.affectedRows === 0 ? 
-        res.status(404).end():res.status(200).end())
+    }).then(result => { 
+        return result.affectedRows == 0 ?
+        res.status(404).end() : res.status(200).end()    
+    })
 })
 
 module.exports = router;
