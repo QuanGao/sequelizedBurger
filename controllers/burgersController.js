@@ -4,7 +4,14 @@ const router = express.Router();
 
 
 router.get("/index", (req, res) => {
-    db.Burger.findAll({}).then(data => {
+    db.Burger.findAll({
+       include:[
+           {
+               model: db.Customer
+           }
+       ]
+    }).then(data => {
+
         let burgerData = data.map(a=>a.dataValues)
         res.render("index", {burgers: burgerData})
     })
@@ -30,6 +37,13 @@ router.put("/api/burgers/:id", (req, res) => {
         return result.changedRows == 0 ?
         res.status(404).end() : res.status(200).end()
     })
+})
+
+router.post("/api/customers",(req, res) => {
+    console.log("flagflag" + req.body.BurgerID)
+    db.Customer.create(req.body).then(result => res.json({
+        id: result.insertId
+    }));
 })
 
 router.delete("/api/burgers/:id", (req, res) => {

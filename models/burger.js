@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define("Burger", {
+    const Burger = sequelize.define("Burger", {
         burger_name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -10,5 +10,11 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: false
         }
 
-    })
+    });
+
+    Burger.associate = function (models) {
+        Burger.hasOne(models.Customer)}
+
+    return Burger;
+
 }

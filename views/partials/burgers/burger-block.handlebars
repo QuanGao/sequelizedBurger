@@ -8,9 +8,13 @@
             Devour me!
         </button>
     {{else}}
+        devoured by {{this.Customer.name}}
         <button class="clearBtn btn-sm btn-outline-primary" data-id="{{id}}">   
             Clear
         </button>   
     {{/unless}}
+    <span><input type="text" name="{{id}}"></span>
 
 </li>
+
+

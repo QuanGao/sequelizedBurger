@@ -21,9 +21,16 @@ $(function () {
 
     $(".devourBtn").on("click", function () {
         let id = $(this).data("id");
+        let customerName = $(`input[type=text][name=${id}]`).val();
+
         $.ajax({
             url: `/api/burgers/${id}`,
             method: "PUT",
+        }).done(function () {
+            $.post("/api/customers", {
+                name: customerName,
+                BurgerID: id
+            })
         }).done(function () {
             location.reload();
         });
