@@ -23,18 +23,22 @@ $(function () {
         let id = $(this).data("id");
         let customerName = $(`input[type=text][name=${id}]`).val();
 
-        $.ajax({
-            url: `/api/burgers/${id}`,
-            method: "PUT",
-        }).done(function () {
-            $.post("/api/customers", {
-                name: customerName,
-                BurgerID: id
+        $.post("/api/customers", {
+            name: customerName
+        }, function (response) {
+            let customerID = response.id;
+            $.ajax({
+                url: `/api/burgers/${id}`,
+                method: "PUT",
+                data: {
+                    customerID: customerID
+                }
+            }).done(function () {
+                location.reload();
             })
-        }).done(function () {
-            location.reload();
-        });
+        })
     })
+
 
     $(".clearBtn").on("click", function () {
         let id = $(this).data("id");

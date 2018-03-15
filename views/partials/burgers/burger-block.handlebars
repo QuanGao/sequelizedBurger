@@ -7,13 +7,13 @@
         <button class="devourBtn btn-sm btn-outline-warning" data-id="{{id}}">
             Devour me!
         </button>
+         <span><input type="text" name="{{id}}"></span>
     {{else}}
-        devoured by {{this.Customer.name}}
+        ( Devoured by {{this.Customer.name}} )
         <button class="clearBtn btn-sm btn-outline-primary" data-id="{{id}}">   
             Clear
-        </button>   
+        </button>
     {{/unless}}
-    <span><input type="text" name="{{id}}"></span>
 
 </li>
 

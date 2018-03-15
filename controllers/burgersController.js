@@ -29,7 +29,10 @@ router.post("/api/burgers", (req, res) => {
 });
 
 router.put("/api/burgers/:id", (req, res) => {
-    db.Burger.update({ devoured: true }, {
+    db.Burger.update({ 
+        devoured: true, 
+        CustomerId: req.body.customerID 
+    }, {
         where: {
             id: req.params.id
         }
@@ -40,9 +43,8 @@ router.put("/api/burgers/:id", (req, res) => {
 })
 
 router.post("/api/customers",(req, res) => {
-    console.log("flagflag" + req.body.BurgerID)
     db.Customer.create(req.body).then(result => res.json({
-        id: result.insertId
+        id: result.id
     }));
 })
 

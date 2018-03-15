@@ -1,15 +1,13 @@
 module.exports = function (sequelize, dataTypes) {
     const Customer = sequelize.define ("Customer", {
-        name: dataTypes.STRING,
+        name: {
+            type:dataTypes.STRING,
+            allowNull:false
+        }
     });
 
     Customer.assoicate = function (models) {
-        Customer.belongsTo(models.Burger, {
-            onDelete: "cascade",
-            foreignKey: {
-                allowNull: false
-            }
-        })
+        Customer.hasOne(models.Burger)
     }
     return Customer;
 
