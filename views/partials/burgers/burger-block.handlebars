@@ -4,10 +4,11 @@
     {{id}} . {{burger_name}}
 
     {{#unless devoured}}
+        <input type="text" name="{{id}}" placeholder="Customer?" class="customer">  
         <button class="devourBtn btn-sm btn-outline-warning" data-id="{{id}}">
             Devour me!
         </button>
-         <span><input type="text" name="{{id}}"></span>
+        
     {{else}}
         ( Devoured by {{this.Customer.name}} )
         <button class="clearBtn btn-sm btn-outline-primary" data-id="{{id}}">   

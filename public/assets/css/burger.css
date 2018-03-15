@@ -4,21 +4,19 @@ body {
 
 h1 {
     font-family: 'Ubuntu', sans-serif;
+    text-align: center;
 }
 
 ul {
     line-height: 50%;
     list-style-type: none;
-    max-width: 70%;
+    max-width: 85%;
     font-size: 14px;
+    text-align: left;
+    line-height: 130%
 }
 
-.notEaten {
-    margin-left: 150px;
-
-}
-
-input {
+#burgerInput {
     height: 60px;
     max-width: 30%;
     margin: auto;
@@ -26,4 +24,18 @@ input {
 
 .eaten {
     color:darkgrey
+}
+
+.customer {
+    width: 70px;
+    font-size: 12px;
+    height: 30px;
+    margin-left: 10px;
+    margin-right: 10px
+}
+
+@media (min-width: 780px){
+    .notEaten {
+        margin-left: 50px;
+    }
 }

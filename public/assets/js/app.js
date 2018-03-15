@@ -1,8 +1,8 @@
 $(function () {
 
-    $("#burgerInput").keyup(function(e){
-        if(e.keyCode === 13){
-        $("#burgerBtn").click();
+    $("#burgerInput").keyup((e) => {
+        if (e.keyCode === 13) {
+            $("#burgerBtn").click();
         }
     });
 
@@ -13,30 +13,32 @@ $(function () {
         if (name) {
             $.post("/api/burgers", {
                 burger_name: name
-            }, function () {
+            }, () => {
                 location.reload();
             })
         }
     })
 
     $(".devourBtn").on("click", function () {
-        let id = $(this).data("id");
-        let customerName = $(`input[type=text][name=${id}]`).val();
+        let burgerId = $(this).data("id");
+        let customerName = $(`input[type=text][name=${burgerId}]`).val().trim();
 
-        $.post("/api/customers", {
-            name: customerName
-        }, function (response) {
-            let customerID = response.id;
-            $.ajax({
-                url: `/api/burgers/${id}`,
-                method: "PUT",
-                data: {
-                    customerID: customerID
-                }
-            }).done(function () {
-                location.reload();
+        if (customerName) {
+            $.post("/api/customers", {
+                name: customerName
+            }, (response) => {
+                let customerID = response.id;
+                $.ajax({
+                    url: `/api/burgers/${burgerId}`,
+                    method: "PUT",
+                    data: {
+                        customerID: customerID
+                    }
+                }).done(() => {
+                    location.reload();
+                })
             })
-        })
+        }
     })
 
 
@@ -45,8 +47,7 @@ $(function () {
         $.ajax({
             url: `/api/burgers/${id}`,
             method: "DELETE"
-        }).then(
-            function () {
+        }).then(() => {
             location.reload();
         });
     });
