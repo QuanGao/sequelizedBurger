@@ -4,6 +4,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        burger_count:{
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         devoured: {
             type: DataTypes.BOOLEAN,
             allowNull: false,

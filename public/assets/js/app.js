@@ -9,10 +9,11 @@ $(function () {
     $("#burgerBtn").on("click", function () {
         event.preventDefault();
         let name = $("#burgerInput").val().trim();
-
+        let count = $("#numInput").val().trim();
         if (name) {
             $.post("/api/burgers", {
-                burger_name: name
+                burger_name: name,
+                burger_count: count
             }, () => {
                 location.reload();
             })

@@ -18,11 +18,7 @@ router.get("/index", (req, res) => {
 });
 
 router.post("/api/burgers", (req, res) => {
-    let newBurgerData = {
-        "burger_name": req.body.burger_name,
-    }
-
-    db.Burger.create(newBurgerData).then(result => res.json({
+    db.Burger.create(req.body).then(result => res.json({
         id: result.insertId
     }));
 
