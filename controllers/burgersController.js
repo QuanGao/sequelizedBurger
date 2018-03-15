@@ -5,7 +5,10 @@ const router = express.Router();
 
 router.get("/index", (req, res) => {
     db.Burger.findAll({
-       include:[
+        order: [
+            ["burger_name", "ASC"]
+        ],
+        include:[
            {
                model: db.Customer
            }
