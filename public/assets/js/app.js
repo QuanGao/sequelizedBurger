@@ -23,7 +23,8 @@ $(function () {
         let burgerId = $(this).data("id");
         let customerName = $(`input[type=text][name=${burgerId}]`).val().trim();
         let count = $("#numInput").val().trim();
-        if (customerName && count) {
+        
+        if (customerName && count>0) {
             $.post("/api/customers", {
                 name: customerName,
                 burger_count: count
@@ -41,7 +42,6 @@ $(function () {
             })
         }
     })
-
 
     $(".clearBtn").on("click", function () {
         let id = $(this).data("id");

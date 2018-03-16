@@ -5,15 +5,15 @@
 
     {{#unless devoured}}
         <input type="text" name="{{id}}" placeholder="Customer?" class="customer">  
-        <input type="number" placeholder="How many?" id="numInput">
+        <input type="number" min="1" placeholder="How many?" id="numInput">
         <button class="devourBtn btn-sm btn-outline-warning" data-id="{{id}}">
             Devour me!
         </button>
         
     {{else}}
-        ( {{this.Customer.name}} Devoured {{this.Customer.burger_count}} )
-        <button class="clearBtn btn-sm btn-outline-primary" data-id="{{id}}">   
-            Clear
+        ( {{this.Customer.name}} devoured {{this.Customer.burger_count}} )
+        <button class="clearBtn btn-sm btn-outline-primary" data-id="{{this.Customer.id}}">   
+            Delete
         </button>
     {{/unless}}
 

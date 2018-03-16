@@ -1,8 +1,8 @@
 
-<br><br><h1>Eat-Da-Burger !</h1><br>
+<br><br><h1>Eat-Da-Burger !</h1><hr>
 
 {{#if data.king}}
-<h3 class="king">Da Burger King is {{data.king.name}} (Record:{{data.king.burger_count}}burgers) </h3><br>
+<h4>Da Burger King is <span class="text-success king"><strong>{{data.king.name}}</strong></span> (Record: <span class="text-success king"><strong>{{data.king.burger_count}}</strong></span> burgers) </h4><br>
 {{/if}}
 <div class="row">
     <div class="col-md-6">
@@ -20,5 +20,5 @@
 <div class="input">
     <label for="burgerInput">Enter a burger you want to eat!</label>
     <input class="form-control" id="burgerInput"><br>
-    <button id="burgerBtn" class="btn btn-outline-info">Submit</button><br><br>
+    <button id="burgerBtn" class="btn btn-outline-success">Submit</button><br><br>
 </div>

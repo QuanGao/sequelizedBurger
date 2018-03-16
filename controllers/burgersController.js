@@ -56,7 +56,7 @@ router.post("/api/customers",(req, res) => {
 })
 
 router.delete("/api/burgers/:id", (req, res) => {
-    db.Burger.destroy({
+    db.Customer.destroy({
         where: {
             id: req.params.id
         }
