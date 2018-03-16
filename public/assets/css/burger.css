@@ -16,7 +16,7 @@ ul {
     line-height: 130%
 }
 
-#burgerInput, #numInput{
+#burgerInput {
     height: 40px;
     max-width: 20%;
     margin: auto;
@@ -26,8 +26,8 @@ ul {
     color:darkgrey
 }
 
-.customer {
-    width: 70px;
+.customer, #numInput {
+    width: 75px;
     font-size: 12px;
     height: 30px;
     margin-left: 10px;

@@ -5,15 +5,26 @@ const router = express.Router();
 
 router.get("/index", (req, res) => {
     db.Burger.findAll({
-       include:[
+        order:["burger_name"],
+        include:[
            {
                model: db.Customer
            }
        ]
     }).then(data => {
-
-        let burgerData = data.map(a=>a.dataValues)
-        res.render("index", {burgers: burgerData})
+        let burgerData = data.map(a=>a.dataValues);
+        db.Customer.findAll({
+            order:[["burger_count","DESC"],["createdAt", "ASC"]]
+        }).then(records => {
+            let kingData = records[0].dataValues
+            console.log(kingData)
+            res.render("index", {
+                data: {
+                    burgers:burgerData,
+                    king:kingData
+                }
+            })
+        })
     })
 });
 

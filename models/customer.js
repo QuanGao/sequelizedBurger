@@ -3,6 +3,10 @@ module.exports = function (sequelize, dataTypes) {
         name: {
             type:dataTypes.STRING,
             allowNull:false
+        },
+        burger_count:{
+            type: dataTypes.INTEGER,
+            allowNull: false
         }
     });
 
