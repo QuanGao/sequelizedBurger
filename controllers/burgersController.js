@@ -16,7 +16,7 @@ router.get("/index", (req, res) => {
         db.Customer.findAll({
             order:[["burger_count","DESC"],["createdAt", "ASC"]]
         }).then(records => {
-            let kingData = records[0].dataValues
+            let kingData = records[0] ? records[0].dataValues:null;
             console.log(kingData)
             res.render("index", {
                 data: {

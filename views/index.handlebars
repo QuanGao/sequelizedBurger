@@ -1,7 +1,9 @@
 
-<br><br><h1>Eat-Da-Burger !</h1><br><br>
+<br><br><h1>Eat-Da-Burger !</h1><br>
 
-<h3>Da Burger King is {{data.king.name}} (Record:{{data.king.burger_count}}burgers) </h3>
+{{#if data.king}}
+<h3 class="king">Da Burger King is {{data.king.name}} (Record:{{data.king.burger_count}}burgers) </h3><br>
+{{/if}}
 <div class="row">
     <div class="col-md-6">
         <ul class="notEaten">
