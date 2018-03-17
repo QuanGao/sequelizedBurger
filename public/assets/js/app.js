@@ -46,7 +46,7 @@ $(function () {
     $(".clearBtn").on("click", function () {
         let id = $(this).data("id");
         $.ajax({
-            url: `/api/burgers/${id}`,
+            url: `/api/customers/${id}`,
             method: "DELETE"
         }).then(() => {
             location.reload();

@@ -54,7 +54,7 @@ router.post("/api/customers",(req, res) => {
     }));
 })
 
-router.delete("/api/burgers/:id", (req, res) => {
+router.delete("/api/customers/:id", (req, res) => {
     db.Customer.destroy({
         where: {
             id: req.params.id

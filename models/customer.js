@@ -11,10 +11,7 @@ module.exports = function (sequelize, dataTypes) {
     });
 
     Customer.assoicate = function (models) {
-        Customer.hasOne(models.Burger, {
-            onDelete: "cascade"
-        })
+        Customer.hasOne(models.Burger)
     }
     return Customer;
-
 }
