@@ -9,10 +9,10 @@ $(function () {
     $("#burgerBtn").on("click", function () {
         event.preventDefault();
         let name = $("#burgerInput").val().trim();
-
+ 
         if (name) {
             $.post("/api/burgers", {
-                burger_name: name
+                burger_name: name,
             }, () => {
                 location.reload();
             })
@@ -22,10 +22,12 @@ $(function () {
     $(".devourBtn").on("click", function () {
         let burgerId = $(this).data("id");
         let customerName = $(`input[type=text][name=${burgerId}]`).val().trim();
-
-        if (customerName) {
+        let count = $("#numInput").val().trim();
+        
+        if (customerName && count>0) {
             $.post("/api/customers", {
-                name: customerName
+                name: customerName,
+                burger_count: count
             }, (response) => {
                 let customerID = response.id;
                 $.ajax({
@@ -40,7 +42,6 @@ $(function () {
             })
         }
     })
-
 
     $(".clearBtn").on("click", function () {
         let id = $(this).data("id");

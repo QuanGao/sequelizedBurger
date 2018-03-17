@@ -5,27 +5,31 @@ const router = express.Router();
 
 router.get("/index", (req, res) => {
     db.Burger.findAll({
-        order: [
-            ["burger_name", "ASC"]
-        ],
+        order:["burger_name"],
         include:[
            {
                model: db.Customer
            }
        ]
     }).then(data => {
-
-        let burgerData = data.map(a=>a.dataValues)
-        res.render("index", {burgers: burgerData})
+        let burgerData = data.map(a=>a.dataValues);
+        db.Customer.findAll({
+            order:[["burger_count","DESC"],["createdAt", "ASC"]]
+        }).then(records => {
+            let kingData = records[0] ? records[0].dataValues:null;
+            console.log(kingData)
+            res.render("index", {
+                data: {
+                    burgers:burgerData,
+                    king:kingData
+                }
+            })
+        })
     })
 });
 
 router.post("/api/burgers", (req, res) => {
-    let newBurgerData = {
-        "burger_name": req.body.burger_name,
-    }
-
-    db.Burger.create(newBurgerData).then(result => res.json({
+    db.Burger.create(req.body).then(result => res.json({
         id: result.insertId
     }));
 
@@ -52,7 +56,7 @@ router.post("/api/customers",(req, res) => {
 })
 
 router.delete("/api/burgers/:id", (req, res) => {
-    db.Burger.destroy({
+    db.Customer.destroy({
         where: {
             id: req.params.id
         }
