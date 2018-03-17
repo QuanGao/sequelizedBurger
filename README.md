@@ -10,7 +10,7 @@
 
 * Submit your burger of choice
 
-<img src="./public/assets/images/1.png" alt="submitBurger" width="600"/>
+<img src="./public/assets/images/1.png" alt="submitBurger" width="450"/>
 
 * Enter your name and number of burger you can eat
 
@@ -18,10 +18,10 @@
 
 * As new users come in, the user with the highest eating record is honored in the banner:
 
-<img src="./public/assets/images/3.png" alt="devourBurger" width="600"/>
+<img src="./public/assets/images/3.png" alt="devourBurger" width="800"/>
 
 * When old king is deleted, the next best eater inherits the throne
 
-<img src="./public/assets/images/4.png" alt="clearBurger" width="600"/>
+<img src="./public/assets/images/4.png" alt="clearBurger" width="800"/>
 
 #### Enjoy!
